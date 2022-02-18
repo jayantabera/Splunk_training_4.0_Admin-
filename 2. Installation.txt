@@ -1,0 +1,48 @@
+-------- Splunk Installation -------------------
+UF >>>
+
+# sudo su 
+
+# cd /opt
+# wget -O splunkforwarder-8.2.5-77015bc7a462-Linux-x86_64.tgz "https://download.splunk.com/products/universalforwarder/releases/8.2.5/linux/splunkforwarder-8.2.5-77015bc7a462-Linux-x86_64.tgz"
+
+# ls 
+splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
+# tar -xvzf splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
+
+cd /opt/splunkforwarder/bin
+# ./splunk start --accept-license
+
+    username: admin
+    password: 12345678
+    password: 1234568
+	
+# ./splunk status
+# ./splunk --version 
+# ./splunk enable boot-start 
+
+
+
+
+-------------------------------------
+
+HF / IDX / SH 
+
+# sudo su 
+# cd /opt 
+# wget -O splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz"
+
+# ls 
+splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
+# tar -xvzf splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz
+
+cd /opt/splunkforwarder/bin
+# ./splunk start --accept-license
+
+    username: admin
+    password: 12345678
+    password: 1234568
+	
+# ./splunk status 
+# ./splunk --version 
+# ./splunk enable boot-start 
