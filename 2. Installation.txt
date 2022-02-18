@@ -10,7 +10,7 @@ UF >>>
 splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
 # tar -xvzf splunkforwarder-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
 
-cd /opt/splunkforwarder/bin
+cd /opt/splunkforwarder/bin         -----------------$SPLUNK_HOME
 # ./splunk start --accept-license
 
     username: admin
@@ -36,7 +36,7 @@ HF / IDX / SH
 splunk-8.2.2.1-ae6821b7c64b-Linux-x86_64.tgz
 # tar -xvzf splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz
 
-cd /opt/splunkforwarder/bin
+cd /opt/splunkforwarder/bin ----------------------- $SPLUNK_HOME
 # ./splunk start --accept-license
 
     username: admin
