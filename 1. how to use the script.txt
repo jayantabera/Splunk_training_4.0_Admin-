@@ -21,7 +21,7 @@ sudo service sshd restart
 
 #######################################################################
 
-then to exit 
+then click exit ------ insert to command mode
 esc :wq 
 
 Change the permission of the file 
