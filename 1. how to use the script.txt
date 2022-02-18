@@ -1,0 +1,15 @@
+connect the server on the browser ....
+sudo su 
+
+
+Create a script file a.sh 
+# vi a.sh 
+type "i" for insert mode
+<copy and paste the script > 
+then to exit 
+esc :wq 
+
+Change the permission of the file 
+# chmod +x a.sh 
+Excute the script 
+# ./a.sh
