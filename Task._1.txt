@@ -1,0 +1,37 @@
+linax  ----
+
+1 sudo su 
+2 ls
+3 pwd
+4 cat
+5 cd
+6 rm
+7 mkdir
+8 cp
+9 tar
+10 wget 
+11 init 
+12 mv
+13 history
+14 whoiam
+15 ping
+16 clear
+17 exit
+18 log out
+19 rmdir
+20 df
+
+
+vi editor commands -->>>
+
+vi <file_name>
+i
+:wq
+:q
+esc 
+shift g
+yy
+dd
+4/5yy
+3u
+/keyword
