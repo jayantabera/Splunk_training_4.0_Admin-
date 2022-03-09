@@ -1,0 +1,75 @@
+------ Server Configuration ------
+UF >>
+Connect HF from UF 
+
+# cd /opt/splunkforwarder/bin 
+# ./splunk add forward-server <ip_private_hf>:9997 
+# ./splunk add forward-server 172.31.23.141:9997 
+
+
+
+-----------------------------------------------------------
+
+HF >>>>>
+Enable 9997 port 
+
+
+CLI >>>>
+
+# cd /opt/splunk/bin
+# ./splunk enable listen 9997 
+
+
+Connect IDX from HF 
+
+# cd /opt/splunk/bin
+# ./splunk add forward-server <ip_private_idx>:9997 
+# ./splunk add forward-server 172.31.44.203:9997 
+
+
+-----------------------------------------
+
+
+IDX  >>>>>
+Enable 9997 port 
+
+GUI >>>>
+
+Settings >>> Forwarding & Receiving >>> Configure Receiving >> New Receiving port
+
+
+CLI >>>>
+
+# cd /opt/splunk/bin
+# ./splunk enable listen 9997 
+
+-------------------------------------------------
+
+SH >>>>>
+
+Connect IDX with SH 
+
+GUI >>>> 
+
+Settings >>> Distributed Search >>> Search Peer >> Add New Peer 
+
+idxinfo :::
+
+
+https://<ip_private_idx>:8089
+idx username >>> admin 
+idx admin username password >>> 12345678
+
+
+-----------------------------------------------------------
+Restart Splunk Service All Splunk SH/IDX/HF/UF
+
+
+SH > IDX > HF > UF 
+
+------------------------------------------------------------------------------------------------------------
+
+To Checking Proper Configuration >>>
+SH >>>
+
+index=_internal 
