@@ -1,0 +1,93 @@
+        ------ Data Onboarding -------
+		
+UF -- its only forward the data .. for forwarding the data through UF we configure in UF "inputs.conf"
+HF -- it can filter & forward the data . for filtering & forwarding the data using "props.conf"
+
+------------------------------------------------------------
+IDX >>>>
+Settings > indexes > new index > Index Name > Save 
+
+index name = training
+
+-------------------------------------------------------------
+
+UF >>>>>
+
+ inpus.conf
+#cd /opt/splunkforwarder/etc/system/local   ---->where we creat the conf file
+
+ # vi inputs.conf
+ 
+ [monitor://<path of the log>]
+ index = <index_name>
+ sourcetype = <sourcetype_name>
+ 
+ 
+ [monitor://<path of the log>]
+ index = <index_name>
+ sourcetype = <sourcetype_name>
+ 
+ 
+ [monitor:///tmp/test4.txt]
+ index = training 
+ sourcetype = testlog
+ 
+
+ After changing any conf files you have give restart your splunk .
+ 
+-----------------------------------------------------------------
+ for restart -->>
+ 
+# cd /opt/splunkforwarder/bin
+# ./splunk restart
+# ./splunk status
+# ./splunk stop
+# ./splunk start
+
+
+-------------------------------------------------------------
+HF >>>	Parsing ------>>>>>
+
+#cd /opt/splunk/etc/system/local  
+# vi props.conf 
+
+[<sourcetype_name>]
+attribute=value
+
+------------------------------------------------------------
+vinay from mumbai
+im from kolkata
+zafar from ap
+ankith from delhi
+
+
+[testlog]
+SHOULD_LINEMERGE = false
+
+
+vinay from mumbai
+
+im from kolkata
+
+zafar from ap
+
+ankith from delhi
+
+After changing your conf files give a restart .
+
+---------------------------------------------------------
+[testlog]
+SHOULD_LINEMERGE = false
+LINE_BREAKER = (,)
+
+he is vinay,and he is zafar
+this is ankit,he is from delhi
+
+
+he is vinay
+
+and he is zafar
+
+this is ankit
+
+he is from delhi
