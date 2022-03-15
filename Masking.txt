@@ -1,0 +1,87 @@
+                                            ------Advance Data Onboarding -------
+	  
+test5.txt
+test6.txt
+test7.txt 
+
+ab.json
+bc.json
+
+#cd /opt/splunkforwarder/etc/system/local
+
+#vi inputs.conf
+
+[monitor:///tmp/*.txt]
+index = training
+sourcetype = testlog2
+
+[monitor:///tmp/*.json]
+index = test
+sourcetype = test_json
+
+                    --------------------- Masking ----------------------
+					
+HF >>>>
+
+#cd /opt/splunk/etc/system/local
+# vi props.conf
+
+Masking >>>>>>>>
+
+SEDCMD-<class_name> = s/<old_pattern>/<new_pattern>/g
+
+[sourcetype]
+attribute = value 
+------------------------------------------------------------
+
+
+                                 ---------- Hard Core masking ------------
+								 
+this is vinay and he is from kolkata
+this is zafar and he is from delhi
+this is abhay and he is from mumbai
+vinay went market imn kolkata
+
+[testlog2]
+SHOULD_LINEMERGE = false
+SEDCMD-namemask = s/(?i)kolkata/kol/g
+
+
+----------------------------------------------------------------
+            ------------- Full Masking -----------------
+			
+This is vinay and his account no is 1234567 
+this is zafar and his account no is 0976549
+He is abhay and his account no is  7809564
+i  am jay my accountno is 2356783
+
+(\w+\s+\w+\s+.*\s+)(\d+)
+       `1            2    
+	   
+
+SEDCMD-accountmask = s/(\w+\s+\w+\s+.*\s+)(\d+)/\1xxxxx/g
+
+
+
+This is vinay and his account no is xxxxx 
+
+this is zafar and his account no is xxxxx
+
+He is abhay and his account no is  xxxxx
+
+i  am jay my accountno is xxxxx
+
+-----------------------------------------------------------
+----------------------------   Task Partial masking ------------------------------
+
+This is vinay he logged in from 191.80.91.7 using port 514
+This is zafar he logged in from 179.89.67.60 using port 8080
+
+
+
+This is vinay he logged in from 191.80.xx.xx using port 5xx
+This is zafar he logged in from 179.89.xx.xx using port 8xx
+
+
+
+-------------------------------------------------------------------------------------
