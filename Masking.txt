@@ -77,11 +77,17 @@ i  am jay my accountno is xxxxx
 This is vinay he logged in from 191.80.91.7 using port 514
 This is zafar he logged in from 179.89.67.60 using port 8080
 
+(\w+\s+.*\s+)(\d+\.\d+)(\.\d+\.\d+\s+.*\s+)(\d)(\d+)
+     1            2            3             4   5
+
+SEDCMD-ipmask = s/(\w+\s+.*\s+)(\d+\.\d+)(\.\d+\.\d+\s+.*\s+)(\d)(\d+)/\1xxx.xxx\3x\5/g
 
 
-This is vinay he logged in from 191.80.xx.xx using port 5xx
-This is zafar he logged in from 179.89.xx.xx using port 8xx
+This is vinay he logged in from xxx.xxx.91.7 using port x14
+This is ayan he logged in from xxx.xxx.87.1 using port x14
 
 
-
--------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+filtering 
+index creation /data retention period 
+DS
