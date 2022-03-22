@@ -1,0 +1,77 @@
+ --------------------------- Filtering -------------------------------
+ HF >>>> 
+ 
+# cd /opt/splunk/etc/system/local 
+
+transforms.conf
+
+<transformation_name>
+attribute = value
+
+
+# cd /opt/splunk/etc/system/local 
+
+# vi props.conf
+
+[sourcetype_name]
+TRANSFORMS-<class_name>=<transforms_name_1>,<transforms_name_2>,<transforms_name_3> .......
+
+              --------- Taking the lines which have keyword "kolkata" ---------------
+			  
+this is zafar and he is from kolkata 
+this is vinay he s from pune 
+this is jay he is from kolkata 
+
+# cd /opt/splunk/etc/system/local 
+
+# vi props.conf
+
+[testlog2]
+SHOULD_LINEMERGE = false
+TRANSFORMS-kolkata=one,two
+
+
+
+# cd /opt/splunk/etc/system/local 
+
+# vi transforms.conf
+
+[one]
+REGEX=.                               [ALL DATA]    
+DEST_KEY=queue
+FORMAT=nullQueue
+
+[two]
+REGEX=(?i)kolkata                     
+DEST_KEY=queue
+FORMAT=indexQueue
+
+ --------------------------- Not to take lines which have keyward kolkata --------------------------
+
+ this is zafar and he is from kolkata 
+this is vinay he s from pune 
+this is jay he is from kolkata 
+
+# cd /opt/splunk/etc/system/local 
+
+# vi props.conf
+
+[testlog2]
+SHOULD_LINEMERGE = false
+TRANSFORMS-nokolkata=kolkatadata
+
+
+# cd /opt/splunk/etc/system/local 
+
+# vi transforms.conf
+
+[kolkatadata]
+REGEX=(?i)kolkata                     
+DEST_KEY=queue
+FORMAT=nullQueue
+
+
+
+
+
+
