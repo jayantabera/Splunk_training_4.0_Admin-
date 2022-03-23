@@ -1,0 +1,30 @@
+    ----------------- Field Extraction --------------------
+	
+this is ayan and he logged in from 198.67.78.90 using port 45
+this is raja and he looged in from 192.23.45.67 using port 23 
+this is ramesh and he logged in from 10.2.3.5 using port 4554
+
+         name                           ip                port
+		 
+name=ayan ip=198.67.78.90 port=45
+
+\w+\s+\w+\s+(\w+)\s+.*\s+(\d+\.\d+\.\d+\.\d+)\s+.*\s+(\d+)
+             1                   2                     3
+			 
+# cd /opt/splunk/etc/system/local 
+
+# vi props.conf
+
+[testlog2]
+SHOULD_LINEMERGE = false
+TRANSFORMS-field=fieldextract
+
+# vi transforms.conf
+
+[fieldextract]
+REGEX=\w+\s+\w+\s+(\w+)\s+.*\s+(\d+\.\d+\.\d+\.\d+)\s+.*\s+(\d+)
+FORMAT=name=$1 ip=$2 port=$3
+DEST_KEY=_raw
+
+
+
