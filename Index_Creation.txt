@@ -1,0 +1,57 @@
+            ------------ Index Creation -------------
+
+	---- Bucket Cycle ----
+	
+--- Hot (1,2,3)
+------- warm (1,2)
+-------- cold (1) ----------- frozen
+----------------------data retention policy
+----------- thawed 
+
+
+This is the path where you can see bucket cycle names ------>>>>>
+# cd /opt/splunk/var/lib/splunk/
+# cd /<idx_name>
+
+rawdara ---- raw log 
+<file_name>.tsidx ---- time series index file .. searchable cpy of data ..
+
+
+ Front ---->>>>>
+ 
+Go to IDX >> Settings >> Indexes >> Creat new index >> Give your Index name >> save
+  
+SSH >>>>>   
+  
+# cd /opt/splunk/etc/system/local/
+# vi indexes.conf 
+
+[<index_name>]
+homePath=/opt/splunk/var/lib/splunk/<index_name>/db
+coldPath=/opt/splunk/var/lib/splunk/<index_name>/colddb
+thawedPath=/opt/splunk/var/lib/splunk/<index_name>/thaweddb
+
+
+[training_3]
+homePath=/opt/splunk/var/lib/splunk/training_3/db
+coldPath=/opt/splunk/var/lib/splunk/training_3/colddb
+thawedPath=/opt/splunk/var/lib/splunk/training_3/thaweddb
+
+------ >>> Retention Period -----
+[training_3]
+homePath=/opt/splunk/var/lib/splunk/training_3/db
+coldPath=/opt/splunk/var/lib/splunk/training_3/colddb
+thawedPath=/opt/splunk/var/lib/splunk/training_3/thaweddb
+maxwarmDBCount=1
+frozenTimePeriodInSec=60
+
+--------- >> Archive Data 
+[training_3]
+homePath=/opt/splunk/var/lib/splunk/training_3/db
+coldPath=/opt/splunk/var/lib/splunk/training_3/colddb
+thawedPath=/opt/splunk/var/lib/splunk/training_3/thaweddb
+maxwarmDBCount=1
+frozenTimePeriodInSec=60
+coldToFrozenDir=/tmp/training_100
+
+
