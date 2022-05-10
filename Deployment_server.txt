@@ -50,13 +50,13 @@ Serverclass creation ---->>>
 	------------------------
       [serverclass:all_uf]    serverclass_name=all_uf         
        whitelist.0 = <ip>
-	   blacklist.0 = <ip>                                                       189.987.90.7
+       blacklist.0 = <ip>                                                           189.987.90.7
 	                                                                            172.170.89.0
-																				198.870.67.4
-																				178.893.89.7 
-																				189.567.90.13
+										    198.870.67.4
+										    178.893.89.7 
+										    189.567.90.13
 	[serverclass:all_uf]          
-     whitelist.0 = 189.987.90.7
+         whitelist.0 = 189.987.90.7
 	 whitelist.1 = 172.170.89.0
 	 whitelist.2 = 198.870.67.4
 	 blacklist.0 = 178.893.89.7
@@ -64,8 +64,8 @@ Serverclass creation ---->>>
 		
 		
     [serverclass:all_uf:app:ufapp>
-     restartsplunkd = 1           [ 1 = Means after deployment splunk restart , 0 = do not restart ]
-	 restartsplunkweb = 0          [ 1 = Means after deployment splunk restart , 0 = do not restart ]
+     restartsplunkd = 1            [ 1 = Means after deployment splunk restart , 0 = do not restart ]
+     restartsplunkweb = 0          [ 1 = Means after deployment splunk restart , 0 = do not restart ]
 		
 
 Push ---->
