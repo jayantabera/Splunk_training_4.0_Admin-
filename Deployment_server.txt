@@ -1,0 +1,82 @@
+DS Conf ---->>
+Which server want to conf as a DS server go server CLI 
+
+#cd /opt/splunk/bin
+#./splunk enable deploy-server 
+
+Go to deployment-client -->(UF,HF,IDX)
+# cd /opt/splunk/bin
+#./splunk set deploy-poll https://<ds_private_ip>:8089
+
+# ./splunk set deploy-poll https://172.198.78.9:8089
+
+
+For checking ---> 
+
+#cd /opt/splunk/etc/system/local 
+#ls
+#deploymentclient.conf
+
+
+How to deploy -->>>
+
+Go to DS ---->>
+# cd /opt/splunk/etc/deployment-apps
+# mkdir <app_name>  ==> mkdir ufapp(app_name)
+# cd ufapp
+# mkdir local
+# vi inputs.conf
+
+        [monitor:///<path_name>]
+		index=<index_name>
+		sourcetype_name=<sourcetype_name>
+		
+		[monitor:///tmp/*.txt]
+		index=test
+		sourcetype_name=log
+		
+
+Serverclass creation ---->>>
+
+#cd /opt/splunk/etc/system/local
+# vi serverclass.conf 
+
+     [serverclass:<serverclass_name>]
+      attribute=value
+
+     [serverclass:<serverclass_name>:app:<app_name>
+      attribute=value	 
+		
+	------------------------
+      [serverclass:all_uf]    serverclass_name=all_uf         
+       whitelist.0 = <ip>
+	   blacklist.0 = <ip>                                                       189.987.90.7
+	                                                                            172.170.89.0
+																				198.870.67.4
+																				178.893.89.7 
+																				189.567.90.13
+	[serverclass:all_uf]          
+     whitelist.0 = 189.987.90.7
+	 whitelist.1 = 172.170.89.0
+	 whitelist.2 = 198.870.67.4
+	 blacklist.0 = 178.893.89.7
+	 blacklist.1 = 189.567.90.13
+		
+		
+    [serverclass:all_uf:app:ufapp>
+     restartsplunkd = 1           [ 1 = Means after deployment splunk restart , 0 = do not restart ]
+	 restartsplunkweb = 0          [ 1 = Means after deployment splunk restart , 0 = do not restart ]
+		
+
+Push ---->
+
+#cd /opt/splunk/bin
+#./splunk reload deploy-server 
+
+
+		
+		
+		
+
+
+
